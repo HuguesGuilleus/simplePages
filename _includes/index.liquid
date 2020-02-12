@@ -6,7 +6,7 @@
 <ul>
 	{%- for file in site.pages -%}
 		{%- if file.dir contains page.dir -%}
-			<li><a href="/{{site.title}}{{file.url}}">{{file.title | default: file.name }}</a></li>
+			<li><a href="{{site.github.baseurl}}{{file.url}}">{{file.title | default: file.name }}</a></li>
 		{%- endif -%}
 	{%- endfor %}
 </ul>
