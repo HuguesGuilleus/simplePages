@@ -9,7 +9,7 @@ layout: default
 
 <h1>
 	{%- assign all = "" -%}
-	{%- assign splited = page.url | split: '/' -%}
+	{%- assign splited = page.url | append: site.github.baseurl | split: '/' -%}
 	{%- assign limit = splited | size | plus: -1 -%}
 	{% for u in splited limit:limit %}
 		{%- assign all = all | append: u | append: "/" -%}
