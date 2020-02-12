@@ -8,7 +8,7 @@ layout: default
 {%- endcomment -%}
 
 <h1 style="margin-bottom:0;">
-	<a href="{{site.github.baseurl}}" title="home">&#127969;</a>
+	<a href="{{site.github.baseurl}}/{{page.path | split: '/' | first | default: "en"}}/" title="home">&#127969; </a>
 	{{- page.title | default: page.name | escape -}}
 </h1>
 {% include lang.liquid %}
