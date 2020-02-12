@@ -7,20 +7,9 @@ layout: default
 	BSD 3-Clause "New" or "Revised" License
 {%- endcomment -%}
 
-<h1>
-	{%- assign all = "" -%}
-	{%- assign splited = page.url | append: site.github.baseurl | split: '/' -%}
-	{%- assign limit = splited | size | plus: -1 -%}
-	{% for u in splited limit:limit %}
-		{%- assign all = all | append: u | append: "/" -%}
-		<a href="{{all}}">{{u|escape}}/</a>
-	{%- endfor -%}
-	{%- if page.name == "index.md" -%}
-		<a href="./">{{splited | last}}/</a>
-	{%- else -%}
-		<a href="{{all}}{{splited | last}}">{{splited | last | escape }}</a>
-	{%- endif -%}&#32;
-	{{- page.title | escape -}}
+<h1 style="margin-bottom:0;">
+	<a href="{{site.github.baseurl}}" title="home">&#127969;</a>
+	{{- page.title | default: page.name | escape -}}
 </h1>
 {% include lang.liquid %}
 
