@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script>
+	(function () {
+		for (let lang of navigator.languages) {
+			switch (lang) {
+				{%- assign langList = "fr/en/es" | split: '/' -%}
+				{%- for lang in langList -%}
+					{% assign ldir = lang | append: "/" | prepend: "/" %}
+					{% assign exist = site.pages | where: "dir", ldir | size %}
+					{%- if exist == 0 -%}
+						{%- continue -%}
+					{%- endif -%}
+					case "{{lang}}":
+						document.location.assign("{{lang}}/") ;
+						return ;
+				{%- endfor -%}
+			}
+		}
+		document.location.href="en/";
+	})();
+	</script>
+</head>
+<body>
+	<noscript>
+		<ul>
+			{%- assign langList = "fr/en/es" | split: '/' -%}
+			{%- for lang in langList -%}
+				{%- assign ldir = lang | append: "/" | prepend: "/" -%}
+				{%- assign exist = site.pages | where: "dir", ldir | size -%}
+				{%- if exist == 0 -%}
+					{%- continue -%}
+				{%- endif -%}
+				<li><a href="{{lang}}/">{{lang}}</a></li>
+			{%- endfor -%}
+		</ul>
+	</noscript>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{%- comment -%}
+	2019 GUILLEUS Hugues <ghugues@netc.fr>
+	BSD 3-Clause "New" or "Revised" License
+{%- endcomment -%}
+
+<ul>
+	{%- for file in site.pages -%}
+		{%- if file.dir contains page.dir -%}
+			<li><a href="{{file.url}}">{{file.title | default: file.name }}</a></li>
+		{%- endif -%}
+	{%- endfor %}
+</ul>

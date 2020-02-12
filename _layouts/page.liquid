@@ -1,0 +1,36 @@
+---
+layout: default
+---
+
+{%- comment -%}
+	2019 GUILLEUS Hugues <ghugues@netc.fr>
+	BSD 3-Clause "New" or "Revised" License
+{%- endcomment -%}
+
+<style>
+	h1:first-of-type{display: none;}
+	h1{margin: 0px !important;}
+</style>
+
+<h1>
+	{%- assign all = "" -%}
+	{%- assign splited = page.url | split: '/' -%}
+	{%- assign limit = splited | size | plus: -1 -%}
+	{% for u in splited limit:limit %}
+		{%- assign all = all | append: u | append: "/" -%}
+		<a href="{{all}}">{{u|escape}}/</a>
+	{%- endfor -%}
+	{%- if page.name == "index.md" -%}
+		<a href="./">{{splited | last}}/</a>
+	{%- else -%}
+		<a href="{{all}}{{splited | last}}">{{splited | last | escape }}</a>
+	{%- endif -%}&#32;
+	{{- page.title | escape -}}
+</h1>
+{% include lang.liquid %}
+
+{{ content }}
+
+{%- if page.name == "index.md" -%}
+	{%- include index.liquid -%}
+{%- endif -%}
