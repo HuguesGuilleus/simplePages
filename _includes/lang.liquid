@@ -28,7 +28,7 @@
 			{%- assign url = page.url | replace_first: pageLang, langCode -%}
 			{%- assign exist = site.pages | where: "url", url | size -%}
 			{%- if exist != 1 -%}{% continue %}{%- endif -%}
-			<a href="{{url | replace: ".md",".html"}}">{{langName}}</a>
+			<a href="/{{site.title}}{{url | replace: ".md",".html"}}">{{langName}}</a>
 		{%- endif -%}
 		{%- assign nbLang = nbLang | plus: 1 -%}
 	{%- endfor -%}
